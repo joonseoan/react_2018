@@ -1,11 +1,116 @@
 import React, { Component } from 'react';
 import PhoneFile from './components/PhoneFile';
+import PhoneInfoList from './components/PhoneInfoList';
 
 class App extends Component {
+  
+  
+  // we need to get this out of state
+  // because it is not related to the rendering.
+  
+  id = 3;
+
+  state = {
+
+      information: [
+        
+        { 
+          id: 0,
+          name: 'Joon',
+          number: '010-885-8888'         
+        },
+        { 
+            id: 1,
+            name: 'James',
+            number: '010-885-7799'         
+        },
+        {
+            id: 2, 
+            name: 'David',
+            number: '010-889-0088'         
+        }
+
+      ]
+  
+  };
+  
+  handleControl = (data) => {
+
+    const { information } = this.state;
+
+    this.setState({
+
+        information: information.concat(
+         
+          // spread!!!!!!!!!! important 
+          {  
+            
+            ...data, 
+            id: this.id++
+
+          }
+        )
+
+    });
+  
+  };
+
+  handleRemove = (id) => {
+
+    const { information } = this.state;
+
+    this.setState({
+
+      information: information.filter(info => ( info.id !== id))
+
+    });
+
+  }
+
+  handleUpdate = (id, data) => {
+
+    const { information } = this.state;
+
+    this.setState({
+
+      information: information.map(
+
+        info => {
+
+          if(info.id === id) {
+
+            return {
+
+              id,
+              ...data
+
+            };
+
+          }
+
+          return info;
+
+        }
+
+      )
+
+    });
+
+  }
+  
   render() {
+
+    console.log('information: ', this.state.information);
+    
     return (
-      <div className="App">
-        <PhoneFile />
+      <div>
+        <PhoneFile data = { this.handleControl } />
+        <PhoneInfoList 
+
+          info = { this.state.information }
+          onRemove = { this.handleRemove }
+          onUpdate = { this.handleUpdate }        
+        />
       </div>
     );
   }

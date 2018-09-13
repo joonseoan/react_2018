@@ -6,6 +6,7 @@ class PhoneFile extends Component {
 
         name: '',
         number: ''
+        
     }
 
     handleInput = (e) => {
@@ -19,10 +20,27 @@ class PhoneFile extends Component {
         
     }
 
+    handleSubmit = (e) => {
+
+        e.preventDefault();
+        // this.props.data(e.targe);
+
+        this.props.data(this.state);
+        // this.props.data(this.state.name  + '  ' + this.state.number);
+        // console.log(e.target.name)
+
+        this.setState({
+
+            name: '',
+            number: ''
+
+        });
+    }
+
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit = { this.handleSubmit }>
                     
                     <input placeholder = "name"
                         name = "name"
@@ -35,16 +53,16 @@ class PhoneFile extends Component {
                         onChange = { this.handleInput }
                         value = { this.state.number }
                     />
-
-                   
+                    
+                    <button type = 'submit'  >Submit</button>
                 </form>
-                <div>
+                {//<div>
 
-                 { this.state.name }         
-                 { this.state.number }
+                //  { this.state.name }          
+                //  { this.state.number }
                 
-                </div>
-                
+                //</div>
+                }
             </div>
         );
     }
