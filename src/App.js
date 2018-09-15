@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PhoneFile from './components/PhoneFile';
 import PhoneInfoList from './components/PhoneInfoList';
+import LifeCycle from './components/playground/LifeCycle';
 
 class App extends Component {
   
@@ -30,7 +31,9 @@ class App extends Component {
             number: '010-889-0088'         
         }
 
-      ]
+      ],
+
+      keyword: ''
   
   };
   
@@ -97,23 +100,58 @@ class App extends Component {
     });
 
   }
+
+  handleChange = (e) => {
+
+    this.setState({
+
+        keyword: e.target.value
+
+    });
+
+  }
   
   render() {
 
-    console.log('information: ', this.state.information);
+    //console.log('information: ', this.state.information);
     
     return (
+
       <div>
+
         <PhoneFile data = { this.handleControl } />
+        <input 
+          
+          onChange = { this.handleChange }
+          value = { this.state.keyword }
+          placeholder = 'searching...'
+
+        />
+          
         <PhoneInfoList 
 
-          info = { this.state.information }
+          info = { 
+          
+            this.state.information.filter(
+
+              info => info.name.indexOf(this.state.keyword) > -1
+
+            )
+          
+          }
           onRemove = { this.handleRemove }
           onUpdate = { this.handleUpdate }        
+        
         />
+
+        <LifeCycle/>
+
       </div>
+    
     );
+  
   }
+
 }
 
 export default App;

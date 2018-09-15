@@ -12,6 +12,8 @@ class PhoneInfo extends Component {
 
     shouldComponentUpdate(nextProps, nextState) {
         
+        // it is always true!!!
+        
         if(this.state !== nextState) return true;
         return this.props.customerInfo !== nextProps.customerInfo;
 
@@ -24,7 +26,7 @@ class PhoneInfo extends Component {
 
     }
     
-    handleToggleEdit = () =>{
+    handleToggleEdit = () => {
         
         const { customerInfo, onUpdate } = this.props;
 
@@ -33,8 +35,8 @@ class PhoneInfo extends Component {
             onUpdate(customerInfo.id, 
                 
                 {
-                    name : this.state.name,
-                    number : this.state.number
+                    name: this.state.name,
+                    number: this.state.number
                 }
             
             );
@@ -47,6 +49,7 @@ class PhoneInfo extends Component {
                 number: customerInfo.number
 
             });
+
         }
 
         this.setState({
@@ -55,6 +58,7 @@ class PhoneInfo extends Component {
             editing: !this.state.editing
 
         });
+
     }
 
     handleInput = (e) => {
