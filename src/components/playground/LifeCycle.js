@@ -48,7 +48,8 @@ class LifeCycle extends Component {
     
     componentWillMount() {
         
-        console.log('Bye!!')
+        console.log('Bye!!');
+        
     }
     
    

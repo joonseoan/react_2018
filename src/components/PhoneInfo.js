@@ -88,10 +88,6 @@ class PhoneInfo extends Component {
         
             <div style = { style }>
             
-                {/*<div> { name } </div>
-                <div> { number } </div>
-                */}
-            
                 {
 
                     editing ?

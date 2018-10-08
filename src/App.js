@@ -12,7 +12,7 @@ class App extends Component {
   id = 3;
 
   state = {
-
+    
       information: [
         
         { 
@@ -37,6 +37,7 @@ class App extends Component {
   
   };
   
+  // Add Info
   handleControl = (data) => {
 
     const { information } = this.state;
@@ -51,25 +52,25 @@ class App extends Component {
             ...data, 
             id: this.id++
 
-          }
-        )
-
+          })
     });
   
   };
 
+  // Remove Info
   handleRemove = (id) => {
 
     const { information } = this.state;
 
     this.setState({
 
-      information: information.filter(info => ( info.id !== id))
+      information: information.filter(info => (info.id !== id))
 
     });
 
   }
 
+  // Update Info
   handleUpdate = (id, data) => {
 
     const { information } = this.state;
@@ -120,6 +121,7 @@ class App extends Component {
       <div>
 
         <PhoneFile data = { this.handleControl } />
+        
         <input 
           
           onChange = { this.handleChange }
@@ -130,10 +132,11 @@ class App extends Component {
           
         <PhoneInfoList 
 
-          info = { 
-          
+          info = {
+
             this.state.information.filter(
 
+              // it returns info groups indexOf >= 0!!!!!!!
               info => info.name.indexOf(this.state.keyword) > -1
 
             )
@@ -144,7 +147,7 @@ class App extends Component {
         
         />
 
-        <LifeCycle/>
+        <LifeCycle />
 
       </div>
     

@@ -44,7 +44,7 @@ class PhoneFile extends Component {
 
         // this.input.focus();
 
-        //2)
+        //2) // defines focus after submitting data
         this.input.current.focus();
 
     }

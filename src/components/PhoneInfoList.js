@@ -15,6 +15,7 @@ class PhoneInfoList extends Component {
 
         const { info, onRemove, onUpdate } = this.props;
 
+        // display value from info of props from App.js 
         const list = info.map(
 
             info => (
