@@ -90,7 +90,6 @@ class PhoneInfo extends Component {
             
                 {
 
-                    editing ?
                     <Fragment>
 
                         <div>
